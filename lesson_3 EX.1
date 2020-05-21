@@ -1,0 +1,87 @@
+package ru.geekbrains.java;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Guess_The_Number
+{
+    public static void main(String[] args)
+    {
+    playGameGuessNumber();
+    }
+
+    static void playGameGuessNumber()
+    {
+        System.out.println("To play the game Guess_The_Number input 1 or input any digit to quit.");
+        Scanner scanner = new Scanner(System.in);
+        int attempts = 3;
+        int choose = scanner.nextInt();
+        if (choose == 1)
+        {
+            Random rand = new Random();
+            int secret = rand.nextInt(10);
+            System.out.println(secret);
+            System.out.println("Input number from 0 to 9.");
+
+            for(int i = 0; i < 3; i++)
+            {
+                System.out.println("WARNING! You have only " + (attempts  - i) + " attempts!");
+                System.out.println();
+                System.out.println("Attempt #" + (i + 1) + ". Input you number:");
+                int input = scanner.nextInt();
+                if(input == secret)
+                {
+                    System.out.println("*******CONGRATULATIONS! YOU WIN!!!********");
+                    System.out.println();
+                    System.out.println();
+                    System.out.println("Want play one more time?");
+                    System.out.println("Input 1 to play or any digit to quit.");
+                    int play_again_win = scanner.nextInt();
+                    if (play_again_win == 1)
+                    {
+                        playGameGuessNumber();
+                    }
+                    else
+                    {
+                        System.out.println("Good bye, see you another time!");
+                        break;
+                    }
+                }
+                if (input > secret)
+                {
+                    System.out.println("Secret number is LESS than inputed. Please repeat input.");
+                    System.out.println();
+                }
+                if (input < secret)
+                {
+                    System.out.println("Secret number is MORE than inputed. Please repeat input.");
+                    System.out.println();
+                }
+                else if (i == 2)
+                {
+                    System.out.println("It was last attempt......           ");
+                    System.out.println("                   ...... GAVE OVER!");
+                    System.out.println();
+                    System.out.println();
+                    System.out.println("Want play one more time?");
+                    System.out.println();
+                    System.out.println("Input 1 to play or any digit to quit.");
+                    int play_again_win = scanner.nextInt();
+                    if (play_again_win == 1)
+                    {
+                        playGameGuessNumber();
+                    }
+                    else
+                    {
+                    System.out.println("Good bye, see you another time!");
+                    break;
+                    }
+                }
+            }
+        } else
+            {
+            System.out.println("Good bye, see you another time!");
+            }
+    }
+
+}
